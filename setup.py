@@ -8,4 +8,7 @@ setup(name='ifttt_maker',
       author_email='sweester@gmail.com',
       license='BSD',
       packages=['ifttt_maker'],
+      install_requires = [
+          'requests',
+      ],
       zip_safe=False)
