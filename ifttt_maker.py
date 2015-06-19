@@ -3,13 +3,10 @@ Simple python interface to ifttt maker
 """
 import requests
 import json
-import logging
 
 
 class Ifttt(object):
     def __init__(self, event_name, secret_key):
-        self.logger = logging.getLogger()
-        self.logger.setLevel(logging.DEBUG)
         self.secret_key = secret_key
         self.url = "https://maker.ifttt.com/trigger/%s/with/key/%s" % (event_name, self.secret_key)
 
@@ -22,7 +19,6 @@ class Ifttt(object):
             data["Value2"] = value1
         if value2:
             data["Value3"] = value1
-        self.logger.debug(data) 
         r = requests.post(self.url, data=json.dumps(data), headers={"Content-Type":"application/json"})
         if r.status_code != 200:
             raise IftttException(r.status_code, r.json())
