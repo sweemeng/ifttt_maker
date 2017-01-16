@@ -14,11 +14,11 @@ class Ifttt(object):
         # Dafuq is this
         data = {}
         if value1:
-            data["Value1"] = value1
+            data["value1"] = value1
         if value2:
-            data["Value2"] = value1
+            data["value2"] = value1
         if value2:
-            data["Value3"] = value1
+            data["value3"] = value1
         r = requests.post(self.url, data=json.dumps(data), headers={"Content-Type":"application/json"})
         if r.status_code != 200:
             raise IftttException(r.status_code, r.json())
